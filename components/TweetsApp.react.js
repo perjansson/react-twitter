@@ -1,3 +1,5 @@
+/** @jsx React.DOM */
+
 var React = require('react');
 var Tweets = require('./Tweets.react.js');
 var Loader = require('./Loader.react.js');
@@ -154,13 +156,13 @@ module.exports = TweetsApp = React.createClass({
 	// Render the component
 	render: function() {
 
-		return {
+		return (
 			<div className="tweets-app">
 				<Tweets tweets={this.state.tweets}/>
 				<Loader paging={this.state.paging}/>
-				<NotificationBar count={this.state.count} onShowNewTweets{this.showNewTweets}/>
+        		<NotificationBar count={this.state.count} onShowNewTweets={this.showNewTweets}/>
 			</div>
-		}
+		)
 
 	}
 

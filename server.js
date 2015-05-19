@@ -1,12 +1,12 @@
 // Require our dependencies
 var express = require('express'),
-	exphbs = require('express-handlebars'),
-	http = require('http'),
-	mongoose = require('mongoose'),
-	twitter = require('ntwitter'),
-	routes = require('./routes'),
-	config = require('./config'),
-	streamHandler = require('./utils/streamHandler');
+  exphbs = require('express-handlebars'),
+  http = require('http'),
+  mongoose = require('mongoose'),
+  twitter = require('ntwitter'),
+  routes = require('./routes'),
+  config = require('./config'),
+  streamHandler = require('./utils/streamHandler');
 
 // Create an express instance and set a port variable
 var app = express();
@@ -34,15 +34,15 @@ app.get('/page/:page/:skip', routes.page);
 // Set /public as our static content dir
 app.use("/", express.static(__dirname + "/public/"));
 
-// Fire it up (start our server)
+// Fire this bitch up (start our server)
 var server = http.createServer(app).listen(port, function() {
-	console.log('Express server listening on port ' + port);
+  console.log('Express server listening on port ' + port);
 });
 
 // Initialize socket.io
 var io = require('socket.io').listen(server);
 
 // Set a stream listener for tweets matching tracking keywords
-twit.stream('statuses/filter', { track: 'aptitud, #aptitud'}, function(stream) {
-	streamHandler(stream,io);
+twit.stream('statuses/filter',{ track: 'javascript'}, function(stream){
+  streamHandler(stream,io);
 });
